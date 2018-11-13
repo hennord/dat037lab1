@@ -7,15 +7,10 @@ public class BinSearchIntSet implements IntSet {
 		int indexAdd;
 		if(!contains(element)) {
 			if(set.length == size) {
-				int[] tempset = new int[(2*set.length)];
-				for(int i =0; i < set.length;i++) {
-					tempset[i] = set[i];
-				}
-				set = tempset;
+				doubleArray();
 			}
 			if(size==0) {
 				set[size] = element;
-				size++;
 			}else {
 				indexAdd = size;
 				while(indexAdd >=1) {
@@ -29,8 +24,8 @@ public class BinSearchIntSet implements IntSet {
 					set[j] = set[j-1];
 					}
 				set[indexAdd]=element;
-				size++;	
 			}
+			size++;
 		}
 	}
 
@@ -61,6 +56,14 @@ public class BinSearchIntSet implements IntSet {
 			}	
 		}
 		return -1;
+	}
+
+	private void doubleArray(){
+		int[] tempset = new int[(2*set.length)];
+		for(int i =0; i < set.length;i++) {
+			tempset[i] = set[i];
+		}
+		set = tempset;
 	}
 	
 	public void remove(int element) {
